@@ -1,6 +1,5 @@
 <?php
 include('config.php');
-
         if (isset($_POST['username'])) {
         $id = $_POST['userid'];
         $username = $_POST['username'];
