@@ -1,6 +1,5 @@
 <?php
 include('config.php');
-
     if (isset($_POST['user'])) {
         $counter = 0;
         $setname = $_POST['set'];
