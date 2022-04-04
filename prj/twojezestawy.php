@@ -1,13 +1,13 @@
 <?php
 include('config.php');
-            $username = $_SESSION['username'];
+        $username = $_SESSION['username'];
             
         $query = "SELECT username, setname FROM savedSets WHERE
         username = '$username'";
         
         $query = "SELECT users.username, sets.set_name FROM users, sets WHERE
         users.id = sets.user_id AND users.username ='$username' GROUP BY users.username, sets.set_name";
-        
+       
         $result = mysqli_query($con, $query);
         if(mysqli_num_rows($result) > 0 ){
         echo "<div class='word-box'><table class='search-tbl'>";
