@@ -1,6 +1,5 @@
 <?php
 include('config.php');
-
     if (isset($_POST['saveSet'])) {
         $username = $_REQUEST['user'];   
         $setname = $_REQUEST['set'];
