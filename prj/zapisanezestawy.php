@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-            $username = $_SESSION['username'];
+        $username = $_SESSION['username'];
             
         $query = "SELECT username, setname FROM savedSets WHERE
         user_saved_set = '$username'";
