@@ -17,7 +17,7 @@ include('config.php');
             else $_SESSION['blocked'] = 1;
             if($row['admin']==1) $_SESSION['admin'] = 1;
 
-            header("Location: stronaglowna.php");
+            header("Location: wyszukaj.php");
         } else {
             echo "<div class='form'>
                   <h3>Zła nazwa użytkownika lub hasło.</h3><br/>

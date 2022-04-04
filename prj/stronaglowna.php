@@ -8,7 +8,7 @@ session_start();
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
    <link rel="stylesheet" href="style.css" />
-   <title>io2</title>
+   <title>prj</title>
  </head>
  <body>
      <div class="whole">

@@ -1,8 +1,7 @@
  <?php 
    echo '<nav class="navbar">
      <ul class="nav-links">
-       <div class="menu">
-         <li><a href="stronaglowna.php">Strona główna</a></li>';
+       <div class="menu">';
 
 if(!isset($_SESSION["username"])) {
     
