@@ -1,6 +1,5 @@
 <?php
 include('config.php');
-
     if (isset($_POST['set-name'])) {
         $setname = $_POST['set-name'];
         $username = $_SESSION["username"];
