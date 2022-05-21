@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $db_host = "localhost";
 $db_user = "id18111179_mrys";
 $db_pass = "zaq1@WSXzaq1@WSX";

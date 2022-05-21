@@ -1,38 +1,4 @@
-<?php
-session_start();
-if(isset($_SESSION["username"])) header("Location: profil.php");
-?>
-<!DOCTYPE html>
-<html lang="en">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
-   <link rel="stylesheet" href="style.css" />
-   <title>prj</title>
- </head>
- <body>
-<?php
-include 'nawigacja.php';
-?>
-   <section class="content">
-       <div class="login">
-           <form action="authenticate.php" method="post" id="pl">
-				<input type="text" class="input-text" name="username" placeholder="Nazwa użytkownika" id="username" required>
-				<input type="password" name="password" placeholder="Hasło" id="password" required>
-				<input type="submit" class="logowanie-btn" value="Wyślij">
-			</form>
-			<form action="authenticate.php" method="post" id="en">
-				<input type="text" class="input-text" name="username" placeholder="Username" id="username" required>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" class="logowanie-btn" value="Submit">
-			</form>
-       </div>
-   </section>
- </body>
-</html>
-<script>
-        var polish = document.getElementById('pl_click'),
+    var polish = document.getElementById('pl_click'),
     english = document.getElementById('en_click'),
     pl_txt = document.querySelectorAll('#pl'),
     en_txt = document.querySelectorAll('#en'),
@@ -56,7 +22,7 @@ function langue(langueOn,langueOff){
         afficher(pl_txt, nb_pl);
         cacher(en_txt, nb_en);
         polish.style.display = 'none';
-        english.style.display = 'flex';
+        english.style.display = 'inline-block';
          localStorage.setItem('langON', 'en');
          localStorage.setItem('langOFF', 'pl');
     }
@@ -64,7 +30,7 @@ function langue(langueOn,langueOff){
         afficher(en_txt, nb_en);
         cacher(pl_txt, nb_pl);
         english.style.display = 'none';
-        polish.style.display = 'flex';
+        polish.style.display = 'inline-block';
         localStorage.setItem('langON', 'pl');
         localStorage.setItem('langOFF', 'en');
     }
@@ -72,7 +38,7 @@ function langue(langueOn,langueOff){
 
 function afficher(txt,nb){
     for(var i=0; i < nb; i++){
-        txt[i].style.display = 'flex';
+        txt[i].style.display = 'inline-block';
     }
 }
 function cacher(txt,nb){
@@ -92,5 +58,3 @@ function init(){
     }
 }
 init();
-
-</script>

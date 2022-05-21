@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,15 +22,21 @@ include 'nawigacja.php';
        <div class="add-test">
            <form action="addtest.php" method="post" class="test" id="test">
                 <div class="test-box">
-                <p class="test-par">Tworzenie testu dla zestawu <b><?php echo $setname ?></b></p>
-				<button class="add-test-btn">Dodaj pole</button>
+                <p class="test-par">
+                    <span id="pl">Tworzenie testu dla zestawu:</span>
+                    <span id="en">Creating a test for the set:</span>
+                     <b><?php echo $setname ?></b></p>
+				<button class="add-test-btn">
+				    <span id="pl">Dodaj pole</span>
+				    <span id="en">Add a field</span></button>
                 <input type="hidden" name="user" value="<?php echo $username ?>">
                 <input type="hidden" name="set" value="<?php echo $setname ?>">
-                <input type="submit" value="Wyślij" class="add-test-btn2">
+                <input type="submit" value="Wyślij" class="add-test-btn2" id="pl">
+                <input type="submit" value="Send" class="add-test-btn2" id="en">
                 </div>
                 <div class="test-box">
-                    <p class="test-par">Pytanie</p>
-                    <p class="test-par">Odpowiedzi</p>
+                    <p class="test-par"><span id="pl">Pytanie</span><span id="en">Question</span></p>
+                    <p class="test-par"><span id="pl">Odpowiedzi</span><span id="en">Answers</span></p>
                 </div>
 			</form>
        </div>
@@ -48,7 +54,7 @@ include 'nawigacja.php';
         if (x < max_fields) {
             x++;
             
-            $(wrapper).append('<div class="test-box"><input type="text" class="question" name="question[]"><input type="radio" name="test'+x+'" value="1"><input type="text" class="input-text" name="answer1[]"><input type="radio" name="test'+x+'" value="2"><input type="text" class="input-text" name="answer2[]"><input type="radio" name="test'+x+'" value="3"><input type="text" class="input-text" name="answer3[]"><input type="radio" name="test'+x+'" value="4"><input type="text" class="input-text" name="answer4[]"><button class="delete">Usun pole</button></div>');
+            $(wrapper).append('<div class="test-box"><input type="text" class="question" name="question[]"><input type="radio" name="test'+x+'" value="1"><input type="text" class="input-text" name="answer1[]"><input type="radio" name="test'+x+'" value="2"><input type="text" class="input-text" name="answer2[]"><input type="radio" name="test'+x+'" value="3"><input type="text" class="input-text" name="answer3[]"><input type="radio" name="test'+x+'" value="4"><input type="text" class="input-text" name="answer4[]"><button class="delete">X</button></div>');
         } else {
             alert('You Reached the limits')
         }
@@ -60,3 +66,4 @@ include 'nawigacja.php';
     })
 });
 </script>
+<script src="lang.js"></script>

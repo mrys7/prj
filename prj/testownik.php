@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,14 +41,17 @@ include 'nawigacja.php';
                 echo '<tr><td class="answer"><input type="radio" name="test'."$x".'" value="'.$ans3.'">'.$ans3.'</td>
                 <td class="answer"><input type="radio" name="test'."$x".'" value="'.$ans4.'">'.$ans4.'</td></tr>';
             }
-            echo '<tr><td colspan="2"><center><input type="submit" value="Wyślij" class="add-set-btn2"></center></td></tr>';
+            echo '<tr><td colspan="2"><center><input type="submit" value="Wyślij" class="add-set-btn2" id="pl">
+            <input type="submit" value="Submit" class="add-set-btn2" id="en"></center></td></tr>';
             echo '</table></form>';
         }
         else
-            echo "<center><p>Ten zestaw nie ma stworzonego testu.</p></center>";
+            echo "<center><p><span id='pl'>Ten zestaw nie ma stworzonego testu.</span>
+            <span id='en'>This set does not have created set yet.</span></p></center>";
     }
 ?>
        </div>
    </section>
  </body>
 </html>
+<script src="lang.js"></script>

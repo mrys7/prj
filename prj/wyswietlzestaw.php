@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,28 +29,33 @@ include 'nawigacja.php';
         if(mysqli_num_rows($result) > 0 ){
         echo '<center><div class="word-box">
                     <table class="display-table">
-                    <tr><p class="word-par"><td><b>Nazwa zestawu:</b></td><td>'.$setname.'</td></p></tr>
+                    <tr><p class="word-par"><td><b><span id ="pl">Nazwa zestawu:</span>
+                    <span id ="en">Set name:</span></b></td><td>'.$setname.'</td></p></tr>
                     </table>
                     <table>
                     <tr><td><form action="saveset.php" method="post">
                     <input type="hidden" name="user" value="'.$username.'">
                     <input type="hidden" name="set" value="'.$setname.'">
-                    <input type="submit" name="saveSet" value="Zapisz zestaw" class="add-set-btn">
+                    <input type="submit" name="saveSet" value="Zapisz zestaw" class="add-set-btn" id="pl">
+                    <input type="submit" name="saveSet" value="Save set" class="add-set-btn" id="en">
                     </form></td>
                     <td><form action="slownictwo.php" method="post">
                     <input type="hidden" name="user" value="'.$username.'">
                     <input type="hidden" name="set" value="'.$setname.'">
-                    <input type="submit" name="wordmodule" value="Moduł słówek" class="add-set-btn">
+                    <input type="submit" name="wordmodule" value="Moduł słówek" class="add-set-btn" id="pl">
+                    <input type="submit" name="wordmodule" value="Vocabulary" class="add-set-btn" id="en">
                     </form></td>
                     <td><form action="testownik.php" method="post">
                     <input type="hidden" name="user" value="'.$username.'">
                     <input type="hidden" name="set" value="'.$setname.'">
-                    <input type="submit" name="testmodule" value="Moduł testu" class="add-set-btn">
+                    <input type="submit" name="testmodule" value="Moduł testu" class="add-set-btn" id="pl">
+                    <input type="submit" name="testmodule" value="Test module" class="add-set-btn" id="en">
                     </form></td>
                     </tr></table>
                 </div></center><br>';
         echo "<div class='word-box'><table class='search-tbl'>";
-        echo "<tr><td><b>Słowo</b></td><td><b>Tłumaczenie</b></td></tr>";
+        echo "<tr><td><b><span id='pl'>Słowo</span><span id='en'>Word</span></b></td><td><b>
+        <span id='pl'>Tłumaczenie</span><span id='en'>Translation</span></b></td></tr>";
             while($row = $result->fetch_assoc()) {
             echo "<tr><td>" . $row['word'] . "</td><td>" . $row['translation'] . "</td></tr>";
         }
@@ -63,3 +68,4 @@ include 'nawigacja.php';
    </section>
  </body>
 </html>
+<script src="lang.js"></script>

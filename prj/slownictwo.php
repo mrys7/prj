@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,11 +30,14 @@ include 'nawigacja.php';
         if(mysqli_num_rows($result) > 0 ){
         echo '<center><div class="word-box">
                     <table class="display-table">
-                    <tr><p class="word-par"><td><b>Nazwa zestawu:</b></td><td>'.$setname.'</td></p></tr>
+                    <tr><p class="word-par"><td><b><span id="pl">Nazwa zestawu:</span>
+                    <span id="en">Set name:</span></b></td><td>'.$setname.'</td></p></tr>
                     </table>
                     <table>
-                    <tr><td><button class="add-set-btn" id="previous">Poprzednie</button></td>
-                    <td><button class="add-set-btn" id="next">Następne</button></td></tr>
+                    <tr><td><button class="add-set-btn" id="previous"><span id="pl">Poprzednie</span>
+                    <span id="en">Previous</span></button></td>
+                    <td><button class="add-set-btn" id="next"><span id="pl">Następne</span>
+                    <span id="en">Next</span></button></td></tr>
                     </table>
                 </div></center><br>';
         $words = [];
@@ -71,9 +74,14 @@ include 'nawigacja.php';
 $(document).ready(function() {
     var s = "SŁOWO";
     var t = "TŁUMACZENIE";
+    var sen = "WORD";
+    var ten = "TRANSLATION";
     var meter = 1;
     var j = 0;
-    $('.word-target').html(s);
+    if(document.querySelector('#pl').style.display == 'none')
+        $('.word-target').html(sen);
+    else
+        $('.word-target').html(s);
     $('.array-target').html(words_and_translations[j]);
     $('.meter-target').html(meter+"/"+count);
     var previous_btn = $("#previous");
@@ -83,12 +91,18 @@ $(document).ready(function() {
         if(j>=0 && j< words_and_translations.length-1) j++;
         if(j%2==0){
             meter++;
-            $('.word-target').html(s);
+            if(document.querySelector('#pl').style.display == 'none')
+                $('.word-target').html(sen);
+            else 
+                $('.word-target').html(s);
             $('.array-target').html(words_and_translations[j]);
             $('.meter-target').html(meter+"/"+count);
         }
         else {
-            $('.word-target').html(t);
+            if(document.querySelector('#pl').style.display == 'none')
+                $('.word-target').html(ten);
+            else 
+                $('.word-target').html(t);
             $('.array-target').html(words_and_translations[j]);
             $('.meter-target').html(meter+"/"+count);
         }
@@ -112,4 +126,4 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<script src="lang.js"></script>

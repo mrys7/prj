@@ -10,6 +10,9 @@ body {
   margin: 0;
 }
 
+#en {
+  display: none;
+}
 a {
  text-decoration: none;
 }
@@ -18,7 +21,6 @@ li {
 }
 
 .navbar {
- 
  padding: 20px;
  color: #000;
 }
@@ -37,6 +39,9 @@ li {
 }
 .menu li {
  padding: 5px 14px;
+}
+.menu .lang {
+    margin-left: auto;
 }
 
 .login {
@@ -90,6 +95,21 @@ li {
 
 .whole {
   height: 100%;
+}
+
+.content-inst {
+    background-image: linear-gradient(#adf6f2, #f1b5b8);
+    height: 100%;
+    width: 100%;
+}
+
+.content-inst p {
+    width: 50%;
+}
+
+.content-inst img {
+    display: block;
+    padding-bottom: 40px;
 }
 
 .content {

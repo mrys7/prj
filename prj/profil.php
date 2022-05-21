@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +13,6 @@ if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
     $(document).ready(function(){
-    /*$("#editprofile").click(function(){
-        $(".right-panel").load("edytujprofil.php");
-    });*/
     $("#saved-sets").click(function(){
         $(".right-panel").load("zapisanezestawy.php");
     });
@@ -31,10 +28,15 @@ include 'nawigacja.php';
 ?>
    <section class="content">
         <div class="left-panel">
-            <!-- <a href="#"><button class="menu-button" id="editprofile">Edytuj profil</button></a> -->
-            <a href="dodajzestaw.php"><button class="menu-button">Stwórz własny zestaw</button></a>
-            <a href="#"><button class="menu-button" id="saved-sets">Zapisane zestawy</button></a>
-            <a href="#"><button class="menu-button" id="your-sets">Twoje zestawy</button></a>
+            <a href="dodajzestaw.php"><button class="menu-button">
+                <span id="pl">Stwórz własny zestaw</span>
+                <span id="en">Create your own set</span></button></a>
+            <a href="#"><button class="menu-button" id="saved-sets">
+                <span id="pl">Zapisane zestawy</span>
+                <span id="en">Saved sets</span></button></a>
+            <a href="#"><button class="menu-button" id="your-sets">
+                <span id="pl">Twoje zestawy</span>
+                <span id="en">Your sets</span></button></a>
         </div>
     
         <div class="right-panel">
@@ -86,3 +88,4 @@ include 'nawigacja.php';
    </section>
  </body>
 </html>
+<script src="lang.js"></script>

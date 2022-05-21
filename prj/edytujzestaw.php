@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,20 +31,21 @@ include 'nawigacja.php';
         <div class="add-set">
            <form action="editset.php" method="post" class="set">
                 <div class="word-box">
-                <p class="word-par">Nazwa zestawu</p>
+                <p class="word-par"><span id="pl">Nazwa zestawu</span><span id="en">Set name</span></p>
                 <input type="hidden" name="old-set-name" value="'.$set.'">
                 <input type="text" class="input-text" name="set-name" value="'.$set.'">
-				<button class="add-set-btn">Dodaj pole</button>
-                <input type="submit" value="Wyślij" class="add-set-btn2">
+				<button class="add-set-btn"><span id="pl">Dodaj pole</span><span id="en">Add a field</span></button>
+                <input type="submit" value="Wyślij" class="add-set-btn2" id="pl">
+                <input type="submit" value="Send" class="add-set-btn2" id="en">
                 </div>
                 <div class="word-box">
                 </div>
                 <div class="word-box">
-                    <p class="word-par">Słowo</p>
-                    <p class="word-par">Tłumaczenie</p>
+                    <p class="word-par"><span id="pl">Słowo</span><span id="en">Word</span></p>
+                    <p class="word-par"><span id="pl">Tłumaczenie</span><span id="en">Translation</span></p>
                 </div>';
             while($row = $result->fetch_assoc()) {
-                echo '<div class="word-box"><input type="text" class="input-text" name="word[]" value="'.$row['word'].'"><input type="text" class="input-text" name="translation[]" value="'.$row['translation'].'"><button class="delete">Usun pole</button></div>';
+                echo '<div class="word-box"><input type="text" class="input-text" name="word[]" value="'.$row['word'].'"><input type="text" class="input-text" name="translation[]" value="'.$row['translation'].'"><button class="delete">X</button></div>';
             }
         }
     }
@@ -64,7 +65,7 @@ include 'nawigacja.php';
         e.preventDefault();
         if (x < max_fields) {
             x++;
-            $(wrapper).append('<div class="word-box"><input class="input-text" type="text" name="word[]"><input type="text" class="input-text" name="translation[]"><button class="delete">Usun pole</button></div>'); //add input box
+            $(wrapper).append('<div class="word-box"><input class="input-text" type="text" name="word[]"><input type="text" class="input-text" name="translation[]"><button class="delete">X</button></div>'); //add input box
         } else {
             alert('You Reached the limits')
         }
@@ -76,3 +77,4 @@ include 'nawigacja.php';
     })
 });
 </script>
+<script src="lang.js"></script>

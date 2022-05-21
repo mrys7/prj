@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+
     if (isset($_POST['user'])) {
         $counter = 0;
         $points = 0;

@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +19,13 @@ include 'nawigacja.php';
        <div class="add-set">
            <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
                <div class="word-box">
-                   <p class="word-par">Wyszukaj zestaw</p>
+                   <p class="word-par"><span id="pl">Wyszukaj zestaw</span>
+                   <span id="en">Search set</span></p>
                </div>
                <div class="word-box">
                     <input type="text" class="input-text" name="set-name">
-                    <input type="submit" value="Wyślij" class="search-btn">
+                    <input type="submit" value="Wyślij" class="search-btn" id="pl">
+                    <input type="submit" value="Submit" class="search-btn" id="en">
                 </div>
 			</form>
 		</div>
@@ -40,19 +42,23 @@ include 'nawigacja.php';
         $result = mysqli_query($con, $query);
         if(mysqli_num_rows($result) > 0 ){
         echo "<div class='word-box'><table class='search-tbl'>";
-        echo "<tr><td><b>Nazwa użytkownika</b></td><td><b>Nazwa zestawu</b></td></tr>";
+        echo "<tr><td><b><span id='pl'>Nazwa użytkownika</span>
+        <span id='en'>Username</span></b></td><td><b><span id='pl'>Nazwa zestawu</span>
+        <span id='en'>Set name</span></b></td></tr>";
             while($row = $result->fetch_assoc()) {
             echo "<tr><td>" . $row['username'] . "</td><td>" . $row['set_name'] . "</td><td>
             <form action='wyswietlzestaw.php' method='post'>
             <input type='hidden' name='user' value='".$row['username']."'>
             <input type='hidden' name='set' value='".$row['set_name']."'>
-            <input type='submit' value='Wyświetl' class='search-btn'>
+            <input type='submit' value='Wyświetl' class='search-btn' id='pl'>
+            <input type='submit' value='Show' class='search-btn' id='en'>
             </form></td>";
             if(isset($_SESSION["admin"])){
                 echo "<td><form action='deleteset.php' method='post'>
             <input type='hidden' name='user' value='".$row['username']."'>
             <input type='hidden' name='set' value='".$row['set_name']."'>
-            <input type='submit' value='Skasuj zestaw' class='search-btn'>
+            <input type='submit' value='Skasuj zestaw' class='search-btn' id='pl'>
+            <input type='submit' value='Delete set' class='search-btn' id='en'>
             </form></td>";
             }
             echo "</tr>";
@@ -67,3 +73,4 @@ include 'nawigacja.php';
    </section>
  </body>
 </html>
+<script src="lang.js"></script>

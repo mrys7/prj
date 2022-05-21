@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["username"])) header("Location: stronaglowna.php");
+if(!isset($_SESSION["username"])) header("Location: logowanie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +21,13 @@ include 'nawigacja.php';
        <?php
 if(isset($_SESSION['ifadded']) && $_SESSION['ifadded'] == 1){
    echo '<div class="register_success">
-        <p style="color: green;">Dodano zestaw</p>
+        <p style="color: green;"></script> <span id="pl">Dodano zestaw</span></script> <span id="en">The set has ben added successfully</span></p>
         </div>';
         unset($_SESSION["ifadded"]);
 }
 elseif(isset($_SESSION['ifadded']) && $_SESSION['ifadded'] == 0){
     echo '<div class="register_success">
-        <p style="color: red;">Błąd</p>
+        <p style="color: red;"></script> <span id="pl">Błąd</span></script> <span id="en">Error</span></p>
         </div>';
         unset($_SESSION["ifadded"]);
 }
@@ -36,23 +36,24 @@ elseif(isset($_SESSION['ifadded']) && $_SESSION['ifadded'] == 0){
        <div class="add-set">
            <form action="addset.php" method="post" class="set">
                 <div class="word-box">
-                <p class="word-par">Nazwa zestawu</p>
+                <p class="word-par"></script> <span id="pl">Nazwa zestawu</span></script> <span id="en">Set name</span></p>
                 <input type="text" class="input-text" name="set-name">
-				<button class="add-set-btn">Dodaj pole</button>
-                <input type="submit" value="Wyślij" class="add-set-btn2">
+				<button class="add-set-btn"></script> <span id="pl">Dodaj pole</span></script> <span id="en">Add a field</span></button>
+                <input type="submit" value="Wyślij" class="add-set-btn2" id="pl">
+                <input type="submit" value="Send" class="add-set-btn2" id="en">
                 </div>
                 <div class="word-box">
                 </div>
                 <div class="word-box">
-                    <p class="word-par">Słowo</p>
-                    <p class="word-par">Tłumaczenie</p>
+                    <p class="word-par"></script> <span id="pl">Słowo</span><span id="en">Word</span></p>
+                    <p class="word-par"></script> <span id="pl">Tłumaczenie</span><span id="en">Translation</span></p>
                 </div>
 			</form>
+			
        </div>
    </section>
  </body>
 </html>
-
 <script>
     $(document).ready(function() {
     var max_fields = 30;
@@ -63,7 +64,7 @@ elseif(isset($_SESSION['ifadded']) && $_SESSION['ifadded'] == 0){
         e.preventDefault();
         if (x < max_fields) {
             x++;
-            $(wrapper).append('<div class="word-box"><input type="text" class="input-text" name="word[]"><input type="text" class="input-text" name="translation[]"><button class="delete">Usun pole</button></div>'); //add input box
+            $(wrapper).append('<div class="word-box"><input type="text" class="input-text" name="word[]"><input type="text" class="input-text" name="translation[]"><button class="delete">X</button></div>'); //add input box
         } else {
             alert('You Reached the limits')
         }
@@ -75,3 +76,4 @@ elseif(isset($_SESSION['ifadded']) && $_SESSION['ifadded'] == 0){
     })
 });
 </script>
+<script src="lang.js"></script>
